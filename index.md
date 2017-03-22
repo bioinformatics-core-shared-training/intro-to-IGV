@@ -1,6 +1,5 @@
-
-
-# Introduction to visualising Next Generation Sequencing data with IGV
+![](images/CRUK_Cambridge_Major Centre logo.jpg)
+![](images/original-logo-Jan3rd.jpeg)
 
 ## Description
 

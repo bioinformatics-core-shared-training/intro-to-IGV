@@ -1,5 +1,5 @@
 
-# Introduction
+# Practical Session 1 - RNA-seq and ChIP-seq data
 
 This	session	will	give	you	short	introduction	into	using	IGV.	We	will	be	using	externally-hosted	data available	from *Encode*	including	ChIP-seq	and	RNA-seq	data. Please	feel	free	to	try	other	datasets	once	you	have	run	through	the	tasks	but	remember	IGV	is	hosted	on	your	machine	so	less	powerful	computers	will	feel	the	memory	load	of	large	numbers	of	datasets.
 
