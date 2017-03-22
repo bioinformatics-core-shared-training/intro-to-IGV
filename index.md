@@ -24,7 +24,7 @@ Developed in collaboration between The University of Cambridge and MRC London In
 
 ## Acknowledgements
 
-We are grateful to the [Griffith Lab](http://genome.wustl.edu/people/groups/detail/griffith-lab/) for making their IGV tutorials available online
-
 ![](images/CRUK_Cambridge_Major Centre logo.jpg)
 ![](images/original-logo-Jan3rd.jpeg)
+
+We are grateful to the [Griffith Lab](http://genome.wustl.edu/people/groups/detail/griffith-lab/) for making their IGV tutorials available online
