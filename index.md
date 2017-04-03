@@ -14,7 +14,7 @@ If time allows, there will be time at the end of the session for you to explore 
 
 Developed in collaboration between The University of Cambridge and MRC London Institute of Medical Sciences.
 
-- [File formats for NGS data](http://mrccsc.github.io/genomic_formats/genomicFileFormats.html)
+- [File formats for NGS data](fileFormats.pdf)
 - [IGV Introduction](http://mrccsc.github.io/IGV_course/igv.html)
 - [Practical Session for RNA-seq and ChIP-seq](IGV-practical.md)
 
