@@ -1,8 +1,9 @@
 #  Introduction to visualising Next Generation Sequencing data with IGV: 12:30 - 17:00
 
-- 12:30 - 13:00 Introduction to File Formats 
-- 13:00 - 13:45 Introduction to IGV (lecture)
-- 13:45 - 14:15 RNA-seq Practical
-- 14:15 - 15:00 Visualisation of variants (lecture)
-- 15:00 - 16:00 Finish RNA-seq practical and Choice of ChIP-seq or variants practical
+- 12:30 - 13:00 Introduction to File Formats (DB / SS)
+- 13:00 - 13:45 Introduction to IGV (lecture) (DB / SS)
+- 13:45 - 14:00 BREAK
+- 14:00 - 14:30 ChIP-seq Practical
+- 14:30 - 15:00 Visualisation of variants (lecture) (ME)
+- 15:00 - 16:00 Finish ChIP-seq practical and Choice of RNA-seq or variants practical
 - 16:00 - 17:00 Free-time to explore own datasets
