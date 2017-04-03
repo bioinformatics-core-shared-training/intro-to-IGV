@@ -119,7 +119,7 @@ dbSNP database of common polymorphisms to see if this is a known SNP.
 * Select `File > Load from Server...` from the main menu and then select
 `Available Datasets > Annotations > Variation and Repeats > dbSNP`
 
-**Note:** it may take a few seconds to load the dbSNP track.
+**Note:** there are very many SNPs so it may take a few seconds to load the dbSNP track.
 
 ![](images/load_dbsnp_annotations.png)
 
@@ -230,7 +230,7 @@ providing useful details such as the the quality value for the T base or the rea
 * No strand bias
 * Allele fraction consistent with heterozygous mutation
 
-**Q4** *What does 'Shade base by quality' do and why might this be helpful?*
+**Q4** *Why is 'Shade base by quality' helpful for scrutinizing potential SNVs?*
 
 **Q5** *How does 'Color by read strand' help?*
 
