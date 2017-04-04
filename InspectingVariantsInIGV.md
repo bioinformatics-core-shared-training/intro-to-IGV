@@ -1,5 +1,6 @@
 ---
 title: "Inspecting Variants in IGV"
+author: "Matt Eldridge, Cancer Research UK Cambridge Institute"
 output:
   html_document:
     toc: yes
@@ -22,11 +23,12 @@ and deletions (indels) and larger structural rearrangements.
 
 ##### Acknowledgement
 
-The material presented here is adapted from the excellent RNA-seq tutorial
+The material presented here is adapted from the excellent
+[RNA-seq tutorial](https://github.com/griffithlab/rnaseq_tutorial/wiki)
 from the Griffith lab at the McDonnell Genome Institute, Washington University School
 of Medicine, St. Louis.
 
-https://github.com/griffithlab/rnaseq_tutorial/wiki
+[https://github.com/griffithlab/rnaseq_tutorial/wiki](https://github.com/griffithlab/rnaseq_tutorial/wiki)
 
 -------------------------------------------------------------------------------------------
 
@@ -49,7 +51,7 @@ are:
 * `HCC1143.normal.21.19M-20M.bam`
 
 These need to be indexed to be read into IGV. The index files have the .bai suffix and
-allow IGV to navigate to a specified genomic location.
+allow IGV to speedily access and display the reads aligning to a specified genomic location.
 
 The reads are from paired end sequencing. DNA fragments of approximately 350 base pairs have
 been sequenced from each end. The read lengths are 101bp.
@@ -59,7 +61,7 @@ been sequenced from each end. The read lengths are 101bp.
 ### Load aligned sequence data
 
 First we need to ensure that IGV is using the same reference genome as that to which
-the sequence data were aligned, GRCh37.
+the sequence data were aligned, GRCh37, also known as hg19.
 
 * Select `Human hg19` from the drop-down list in the top left of the IGV window.
 
@@ -77,6 +79,8 @@ there to see what genes this region covers. To do so, either:
 * Click on the Home button on the toolbar to jump to the whole genome view, select chromosome
 21 in the drop-down list or in the 'genome ruler' in the top pane, then click and drag from
 19mb to 20mb
+
+or
 
 * Enter `chr21:19,000,000-20,000,000` in the genome position box just to the left of the Home
 button
@@ -134,7 +138,7 @@ The dbSNP track is at the bottom of the IGV window. Black bars represent known S
 your web browser.
 
 We can adjust the allele fraction threshold above which the bar in the coverage track will
-be coloured by allele read count instead of grey using the `View > Preferences` dialog.
+be coloured by allele read count using the `View > Preferences` dialog.
 
 * Select `View > Preferences...` from the main menu
 
@@ -145,10 +149,10 @@ be coloured by allele read count instead of grey using the `View > Preferences` 
 ![](images/view_preferences.png)
 
 Decreasing the threshold shows more possible variants, increasing the threshold results in
-fewer variant positions. For example, on lowering the threshold to 0.01 we get several
-additional coloured bars, many of which have a single read supporting an alternative
-allele to that in the reference sequence. We'll use a threshold of 0.05 for the rest
-of this tutorial.
+fewer variant positions. In this dataset with an average depth of around 60 reads at each
+position, lowering the threshold to 0.01 results in several additional coloured bars, many
+of which have a single read supporting an alternative allele to the reference base.
+We'll use a threshold of 0.05 for the rest of this tutorial.
 
 * Reset the Coveage allele-fraction threshold to 0.05
 
@@ -166,7 +170,7 @@ The coverage appears to correlate with GC content. Next-generation sequencing te
 tend to lose coverage in regions with low GC content.
 
 You can also use a collapsed view of the alignments which for this depth of sequencing
-will allow all the aligning in this region to be visible without the need for scrolling.
+will allow all the reads aligning in this region to be visible without the need for scrolling.
 
 * Right click in the main alignment track and select `Collapsed` from the menu
 
@@ -175,7 +179,7 @@ will allow all the aligning in this region to be visible without the need for sc
 The read pileup mirrors the coverage track.
 
 We'll now remove the GC Percentage track to allow more screen real estate for the read
-alignments for the next part of the tutorial.
+alignments and other tracks used in the next part of the tutorial.
 
 * Right click on the GC Percentage track and select `Remove Track` from the menu, then
 click `Yes` to confirm
@@ -202,7 +206,7 @@ $$ $$
 
 There are two heterozygous variants.
 
-**Q1** *Which of these corresponds to a known SNP in dbSNP?*
+**Q1** *Which of these corresponds to a known SNP?*
 
 **Q2** *What is the population allele frequency of the alternate (non-reference) allele?*
 
@@ -218,8 +222,8 @@ orientation, compare with normal read alignments displayed as grey bars)
 
 * Right click in the alignment track and select `Color alignments by > read strand`
 
-* Open the view preferences dialog and ensure that the `Shade mismatched bases by quality`
-setting is turned on
+* Right click again in the alignment track and ensure that `Shade mismatch bases by quality`
+is selected
 
 ![](images/high_confidence_snv.png)
 
