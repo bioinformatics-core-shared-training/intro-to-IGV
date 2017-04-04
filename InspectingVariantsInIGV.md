@@ -51,6 +51,9 @@ are:
 These need to be indexed to be read into IGV. The index files have the .bai suffix and
 allow IGV to navigate to a specified genomic location.
 
+The reads are from paired end sequencing. DNA fragments of approximately 350 base pairs have
+been sequenced from each end. The read lengths are 101bp.
+
 -------------------------------------------------------------------------------------------
 
 ### Load aligned sequence data
@@ -234,45 +237,10 @@ providing useful details such as the the quality value for the T base or the rea
 
 **Q5** *How does 'Color by read strand' help?*
 
--------------------------------------------------------------------------------------------
-
-#### Heterozygous SNPs on different alleles
-
-* Navigate to region `chr21:19,666,814-19,666,988`
-
-* Sort by base (at position `chr21:19,666,901`)
-
-* Right click in the alignment track and turn off colouring of reads (`Color alignments by > no color`)
-
-![](images/two_neighbouring_snvs_on_different_alleles.png)
-
-**Note** *there is no linkage between alleles for these two SNPs because reads
-covering both only contain one or the other*
+Strand bias is where reads supporting a variant align to one strand, i.e. in the forward or the
+reverse direction, and not the other. It is associated with false positive variant calls.
 
 -------------------------------------------------------------------------------------------
-
-#### Homopolymer region with indel
-
-* Navigate to region `21:19,518,420-19,518,505`
-
-* Centre on the A within the homopolymer run (`chr21:19,518,470`), and `Sort alignments by -> base`
-
-**Q6** *What do you notice about the reads with mismatches at this position?*
-(hint: look at the position of the mismatch within the reads)
-
-* Centre on the one base deletion on the left hand side of the poly-T run (`chr21:19,518,452`)
-and `Sort alignments by -> base`
-
-![](images/homopolymer_region_with_indel.png)
-
-**Q7** *Why are some reads displayed in a light grey colour?* (hint: hover over these reads to
-bring up the tooltip and see what is different about these alignments)
-
-**Notes**
-
-* The alternate allele is either a deletion or insertion of one or two Ts
-* The remaining bases are mismatched in some reads because the aligner is penalizing
-opening a gap more than 2 or 3 mismatches, i.e. these reads are misaligned
 
 #### Repeat region
 
@@ -281,13 +249,16 @@ opening a gap more than 2 or 3 mismatches, i.e. these reads are misaligned
 * Load repeat tracks by selecting `File > Load from Server...` from the main menu and then select
 `Available Datasets > Annotations > Variation and Repeats > Repeat Masker`
 
+* Right click in the alignment track and select `Color alignments by > insert size and pair orientation`
+
 ![](images/repeat_region.png)
 
 **Notes**
 
 * Low mapping quality for all reads
-* Several reads shown as light grey bars have zero mapping quality which means they
-can be mapped somewhere else in the genome equally as well (or poorly)
+* Several reads shown as light grey bars or light coloured bars have zero mapping quality
+which means they can be mapped somewhere else in the genome equally as well (or poorly)
+* Reads shown as coloured bars have mates that map to another chromosome
 * There are two LINE elements that cause probable misalignments
 
 Variants called in repetitive regions should be treated with caution.
@@ -297,9 +268,35 @@ mismatches by base at each position
 
 ![](images/repeat_region_zoomed_in.png)
 
-**Q8** *Can you spot any patterns in the reads containing mismatches?*
+**Q6** *Can you spot any patterns in the reads containing mismatches?*
 
-**Q9** *Which of these variant positions is most likely to be a real SNV?*
+**Q7** *Which of these variant positions is most likely to be a real SNV?*
+
+-------------------------------------------------------------------------------------------
+
+#### Homopolymer region with indel
+
+* Navigate to region `chr21:19,375,400-19,375,500`
+
+* Right click in the alignment track and turn off 'Shade base by quality'
+
+![](images/homopolymer_region_with_indel.png)
+
+**Q8** *What do the purple* `I` *symbols represent?*
+
+**Q9** *Several read alignments have mismatches. Can you see how these could have been aligned differently to be more consistent with other reads?*
+
+**Q10** *How would you summarize the differences between HCC1143/BL and the reference sequence?*
+
+**Notes**
+
+* Aligners often penalize opening a gap more heavily than allowing 2 or 3 mismatches
+towards the ends of reads; this can be source of false positive variant calls
+
+* Common variants from dbSNP include some cases that are actually common misalignments
+caused by repeats
+
+-------------------------------------------------------------------------------------------
 
 #### Homozygous deletion
 
@@ -322,40 +319,101 @@ for both ends
 * Insert size of red read pairs is 2875bp
 * This corresponds to a homozygous deletion of 2.5kb
 
-#### Misalignment around Alu
+Reads that span a rearrangement often have clipped alignments and these can be viewed in IGV.
 
-* Navigate to `chr21:19,102,100-19,103,100`
+* Turn off `View as pairs` and zoom in to the left hand end of the deletion.
 
-![](images/alu_misalignment.png)
+* Open the view preferences dialog and select `Show soft-clipped bases`
 
-**Notes**
+**Q11** *What do you notice about the clipped sequence from the junction-spanning reads?*
 
-* This is a position where AluY element causes misalignment
-* Misaligned reads have mismatches to the reference and well-aligned reads have
-partners on other chromosomes at locations where there are additional ALuY elements
+Repeat for the other end of the deletion.
 
-* Zoom out until you can clearly see the contrast between the difficult alignment region (corresponding to an AluY) and regions with clean alignments on either side
+-------------------------------------------------------------------------------------------
 
-#### Translocation
+### Comparing alignments for different samples
 
-* Navigate to `chr21:19,090,000-19,095,000`
+Multiple alignment tracks can be viewed alongside each other. This can be helpful when comparing
+the variants between related samples, e.g. comparing a cancer genome with the matched normal to
+detect somatic variants.
 
-* Right click in the main alignment track and select
-  * `Expanded` view
+Another scenario where this would be useful is in looking for possible de novo mutations or autosomal
+recessive mutations within a parent-child trio. In this case, we would display the genomic read alignments
+for the mother and father alongside those for the child.
+
+-------------------------------------------------------------------------------------------
+
+#### Somatic SNV
+
+We'll load the alignments for the HCC1143 cell line alongside those for the matched normal that we've been looking at so far.
+
+* Right click in the main alignment track and turn off `View as pairs`
+
+* Select `File > Load from File...` from the main menu and select the BAM file `HCC1143.tumour.21.19M-20M.bam` using the file browser.
+
+* Navigate to `chr21:19,544,728-19,544,828`
+
+* Select the `Collapsed` view for both alignment tracks, tumour and normal.
+
+![](images/somatic_snv.png)
+
+Support for an A>T mutation at `chr21:19,544,778` is only evident in the tumour. This is a somatic SNV.
+
+**Q12** *Is there any reason to doubt that this mutation is real?*
+
+-------------------------------------------------------------------------------------------
+
+#### Loss of heterozygosity
+
+* Zoom out to see a 20kb region surrounding the somatic SNV we just examined at `chr21:19,544,778`
+
+![](images/loss_of_heterozygosity.png)
+
+**Q13** *What do you notice when comparing the variants that are visible in the coverage tracks in the tumour and normal?*
+
+-------------------------------------------------------------------------------------------
+
+#### Germline indel
+
+* Navigate to and inspect the 8bp deletion at `chr21:19,956,710`
+
+* View each of the tumour and normal tracks using the `Expanded` view
+
+![](images/germline_deletion.png)
+
+**Note:** dbSNP contains common small insertions and deletions including this deletion.
+
+**Q14** *What fraction of the individuals sequenced as part of the 1000 Genomes Project also have this deletion?*
+
+**Q15** *There is some ambiguity about which 8 bases have been deleted. Can you see why and what other sequences of 8 bases could have been used to represent the deletion?*
+
+Reads containing indels have been left-aligned to standardize the representation when multiple
+valid representations are possible, i.e. when the same indel can be placed at multiple positions.
+The standard convention is to place an indel at the left-most position possible.
+
+-------------------------------------------------------------------------------------------
+
+#### Inversion
+
+* Zoom out from the deletion to view the 1.5kb surrounding region (`chr21:19,955,955-19,957,456`)
+
+* In each of the normal and tumour tracks, right click and select
+  * `View as pairs`
+  * `Color alignments by -> pair orientation`
   * `Group alignments by -> pair orientation`
-  * `Color alignments by -> insert size and pair orientation`
 
-![](images/translocation.png)
+![](images/somatic_inversion.png)
 
-**Notes**
+There are two read pairs shown in blue which have the same orientation; this indicates a
+possible inversion, i.e. a rearrangement in which a segment of a chromosome is reversed
+end to end.
 
-* Many read alignments with mismatches to the reference sequence
-* Read pairs in RL orientation instead of usual LR pattern
-* Region is flanked by reads with poor mapping quality (light grey)
-* Presence of reads with pairs on other chromosomes (coloured reads at the bottom
-when scrolling down)
+A sketch can help to see how the read pairs spanning the end of an inverted segment of
+DNA will end up aligning to the reference sequence in the same direction.
 
-TODO: examples of somatic mutations
+The output from the variant caller indicated that there were 4 supporting read pairs.
 
-TODO: create 2 - 3 exercises looking at other variant positions (one of which can be the 2 neightbour SNPs on different alleles)
+**Q16** *Why were 2 of the 4 read pairs not displayed in IGV?* (hint: look at the filtering
+options from the view preferences dialog)
 
+-------------------------------------------------------------------------------------------
