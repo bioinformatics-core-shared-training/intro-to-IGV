@@ -97,4 +97,4 @@ between	tissue
     + Select	Gene	Track	->	Refseq	Genes
     + Select	Alignment	Tracks	–>	Heart		+	Liver
 - Save image and compare junctions across tissue
-
+    + File -> Save Image ...
