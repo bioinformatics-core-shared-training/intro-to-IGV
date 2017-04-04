@@ -17,10 +17,16 @@ Developed in collaboration between The University of Cambridge and MRC London In
 - [File formats for NGS data](fileFormats.pdf)
 - [IGV Introduction](http://mrccsc.github.io/IGV_course/igv.html)
 - [Practical Session for RNA-seq and ChIP-seq](IGV-practical.md)
-
+- [Inspecting Variants in IGV](InspectingVariantsInIGV.md)
 
 ## Data
 
+- [HCC1143.normal.21.19M-20M.bam - 78M](http://content.cruk.cam.ac.uk/bioinformatics/CourseData/IntroToIGV/HCC1143.normal.21.19M-20M.bam)
+- [HCC1143.normal.21.19M-20M.bam.bai - 13K](http://content.cruk.cam.ac.uk/bioinformatics/CourseData/IntroToIGV/HCC1143.normal.21.19M-20M.bam.bai)
+- [HCC1143.tumour.21.19M-20M.bam - 115M](http://content.cruk.cam.ac.uk/bioinformatics/CourseData/IntroToIGV/HCC1143.tumour.21.19M-20M.bam)
+- [HCC1143.tumour.21.19M-20M.bam.bai - 13K](http://content.cruk.cam.ac.uk/bioinformatics/CourseData/IntroToIGV/HCC1143.tumour.21.19M-20M.bam.bai)
+- [repeats.21.19M-20M.rmask - 139K](http://content.cruk.cam.ac.uk/bioinformatics/CourseData/IntroToIGV/repeats.21.19M-20M.rmask)
+- [snp147.21.19M-20M.ucscsnp - 9.5M](http://content.cruk.cam.ac.uk/bioinformatics/CourseData/IntroToIGV/snp147.21.19M-20M.ucscsnp)
 
 ## Acknowledgements
 
