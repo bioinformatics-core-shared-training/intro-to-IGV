@@ -202,6 +202,8 @@ $$ $$
 
 * Navigate to `chr21:19,479,200-19,479,800`
 
+* Right click in the alignment track and select `Color alignments by > insert size and pair orientation`
+
 ![](images/two_neighbouring_snvs.png)
 
 There are two heterozygous variants.
@@ -214,6 +216,8 @@ There are two heterozygous variants.
 (hint: bring up the tooltip for these reads and look at insert size, mate start and pair
 orientation, compare with normal read alignments displayed as grey bars)
 
+Let's take a closer look at one of these two SNVs.
+
 * Zoom in and centre on the C/T SNV on the left (chr21:19,479,321)
 
 * Right click in the alignment track and select `Expanded`
@@ -225,10 +229,10 @@ orientation, compare with normal read alignments displayed as grey bars)
 * Right click again in the alignment track and ensure that `Shade mismatch bases by quality`
 is selected
 
-![](images/high_confidence_snv.png)
-
 * Hover the cursor over the red T bases in reads that support the SNV to display a tooltip
 providing useful details such as the the quality value for the T base or the read mapping quality
+
+![](images/high_confidence_snv.png)
 
 **Notes**
 
@@ -345,7 +349,7 @@ Another scenario where this would be useful is in looking for possible de novo m
 recessive mutations within a parent-child trio. In this case, we would display the genomic read alignments
 for the mother and father alongside those for the child.
 
--------------------------------------------------------------------------------------------
+$$ $$
 
 #### Somatic SNV
 
